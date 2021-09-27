@@ -20,13 +20,13 @@ private val repository: NewsRepository
             emit(Resource.Success<List<DisplayArticle>>(news))
         }
         catch (e: HttpException){
-            emit(Resource.Error<List<DisplayArticle>>(message = e.localizedMessage ?: e.toString()))
+            emit(Resource.Error<List<DisplayArticle>>(message = e.localizedMessage ?: "couldn't read server. Check your internet connection"))
         }
         catch(e: IOException){
             emit(Resource.Error<List<DisplayArticle>>(message = "couldn't read server. Check your internet connection"))
         }
         catch(e: Exception){
-            emit(Resource.Error<List<DisplayArticle>>(message = e.toString()))
+            emit(Resource.Error<List<DisplayArticle>>(message = "couldn't read server. Check your internet connection"))
         }
     }
 }

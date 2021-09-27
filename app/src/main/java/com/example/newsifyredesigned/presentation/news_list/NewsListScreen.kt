@@ -1,5 +1,6 @@
 package com.example.newsifyredesigned.presentation.news_list
 
+import android.content.Context
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,13 +20,14 @@ import com.example.newsifyredesigned.presentation.news_list.components.NewsListI
 
 @Composable
 fun NewsListScreen(
-    viewModel: NewsListViewModel = hiltViewModel()
+    viewModel: NewsListViewModel = hiltViewModel(),
+    context: Context
 ) {
     val state = viewModel.state.value
     Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             items(state.news) { news ->
-                NewsListItem(news = news)
+                NewsListItem(news = news, context)
             }
         }
 
