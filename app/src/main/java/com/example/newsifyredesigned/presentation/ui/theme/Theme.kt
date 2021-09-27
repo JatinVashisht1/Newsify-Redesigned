@@ -1,4 +1,4 @@
-package com.example.newsifyredesigned.Presentation.ui.theme
+package com.example.newsifyredesigned.presentation.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

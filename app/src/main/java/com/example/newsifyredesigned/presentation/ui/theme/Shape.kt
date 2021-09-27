@@ -1,4 +1,4 @@
-package com.example.newsifyredesigned.Presentation.ui.theme
+package com.example.newsifyredesigned.presentation.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
