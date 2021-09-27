@@ -12,17 +12,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.Coil
+import coil.annotation.ExperimentalCoilApi
 import com.example.newsifyredesigned.domain.model.DisplayArticle
 
+@ExperimentalCoilApi
 @Composable
 fun NewsListItem(news: DisplayArticle) {
     Column(modifier = Modifier
         .padding(8.dp)){
 
+        Card(elevation = 16.dp) {
         news.urlToImage?.let { LoadImage(url = it) }
-
-        Card() {
-
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
