@@ -64,13 +64,6 @@ fun NewsListItem(news: DisplayArticle, context: Context) {
                             modifier = Modifier.clickable { Toast.makeText(context , "Not implemented yet", Toast.LENGTH_LONG).show() }
                         )
 
-//                        Scaffold() {
-//                            if(snackbarState.value){
-//                                Snackbar() {
-//                                    Text(text = "Yet to be implemented")
-//                                }
-//                            }
-//                        }
 
                     }
                 }

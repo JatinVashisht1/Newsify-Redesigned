@@ -18,6 +18,35 @@ private val getNewsUseCase: GetNewsUseCase
     private val _state = mutableStateOf<NewsListState>(NewsListState())
     val state: State<NewsListState> = _state
 
+    private val _newsChips = mutableStateOf<List<String>>(listOf(
+        "India",
+        "World",
+        "Business",
+        "Cricket",
+        "Football",
+        "Science",
+        "Technology",
+        "Automobile",
+        "Cars"
+    ))
+    val newsChips: State<List<String>> = _newsChips
+
+    private val _currentSelectedChip = mutableStateOf<String>("")
+    val currentSelectedChip: State<String> = _currentSelectedChip
+
+    private val _previouslySelectedChip = mutableStateOf<String>("")
+    val previouslySelectedChip: State<String> = _previouslySelectedChip
+
+    fun updateSelectedChip(
+        currentSelectedChip: String,
+        newlySelectedChip: String
+    ) {
+        if (newlySelectedChip != currentSelectedChip) {
+            this._previouslySelectedChip.value = currentSelectedChip
+            this._currentSelectedChip.value = newlySelectedChip
+        }
+    }
+
     init{
         getNews()
     }

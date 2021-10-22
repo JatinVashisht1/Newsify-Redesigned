@@ -1,10 +1,7 @@
 package com.example.newsifyredesigned.presentation.news_list
 
 import android.content.Context
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
@@ -16,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.newsifyredesigned.presentation.news_list.components.NewsChips
 import com.example.newsifyredesigned.presentation.news_list.components.NewsListItem
 
 @Composable
@@ -26,6 +24,14 @@ fun NewsListScreen(
     val state = viewModel.state.value
     Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
+            item(1){
+                NewsChips(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .fillMaxWidth()
+                        .padding(8.dp)
+                )
+            }
             items(state.news) { news ->
                 NewsListItem(news = news, context)
             }
@@ -41,7 +47,7 @@ fun NewsListScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(20.dp)
-                .align(Alignment.Center)
+                    .align(Alignment.Center)
             )
         }
 
