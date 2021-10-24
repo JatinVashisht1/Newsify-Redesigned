@@ -13,10 +13,10 @@ import coil.compose.rememberImagePainter
 
 @ExperimentalCoilApi
 @Composable
-fun LoadImage(url: String){
+fun LoadImage(url: String, height: Float){
 
     Box(modifier = Modifier.fillMaxWidth()
-        .height(250.dp)) {
+        .height(height.dp)) {
         Column {
 
 

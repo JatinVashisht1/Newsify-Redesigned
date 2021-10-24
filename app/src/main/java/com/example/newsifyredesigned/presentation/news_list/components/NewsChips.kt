@@ -63,6 +63,7 @@ fun NewsChipItem(
     Card(
         modifier = modifier.clickable {
                             viewModel.updateSelectedChip(currentSelectedChip = currentSelectedChip, newlySelectedChip = chip)
+                            viewModel.getNewsByChip()
         },
         backgroundColor = if(chip == currentSelectedChip) ChipSelected else Color.DarkGray
     ) {

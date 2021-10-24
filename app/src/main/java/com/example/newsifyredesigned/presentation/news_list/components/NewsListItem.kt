@@ -15,40 +15,43 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.VerticalAlignmentLine
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import coil.annotation.ExperimentalCoilApi
 import com.example.newsifyredesigned.domain.model.DisplayArticle
+import com.example.newsifyredesigned.presentation.Screen
 
 @ExperimentalCoilApi
 @Composable
-fun NewsListItem(news: DisplayArticle, context: Context) {
-    val expanded = rememberSaveable{mutableStateOf(false)}
-    val snackbarState = rememberSaveable{mutableStateOf(false)}
+fun NewsListItem(news: DisplayArticle, navController: NavController) {
+    val expanded = rememberSaveable { mutableStateOf(false) }
+    val snackbarState = rememberSaveable { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
-    Column(modifier = Modifier
-        .padding(8.dp)
-        .wrapContentHeight()
-    ){
+
+    Column(
+        modifier = Modifier
+            .padding(8.dp)
+            .wrapContentHeight()
+    ) {
 
         Card(elevation = 16.dp,
-        modifier = Modifier
-            .animateContentSize(tween(300, easing = FastOutLinearInEasing))
-            .clickable { expanded.value = !expanded.value }
-            ) {
+            modifier = Modifier
+                .animateContentSize(tween(300, easing = FastOutLinearInEasing))
+                .clickable { expanded.value = !expanded.value }
+//                .shadow(16.dp, shape = RectangleShape)
+                .padding(8.dp)
+        ) {
             Column {
-
-                news.urlToImage?.let { LoadImage(url = it) }
-//                Divider(color = Color.LightGray)
+                news.urlToImage?.let { LoadImage(url = it, 250f) }
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .wrapContentHeight()
-
-//                    .padding(0.dp)
-                    ,
+                        .wrapContentHeight(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Column {
@@ -58,20 +61,12 @@ fun NewsListItem(news: DisplayArticle, context: Context) {
                             modifier = Modifier.padding(4.dp),
                             fontWeight = if (!expanded.value) FontWeight.Bold else FontWeight.SemiBold
                         )
-                        Spacer(modifier = Modifier.padding(4.dp))
-                        Text(
-                            text = if(!expanded.value) "" else "Read More",
-                            modifier = Modifier.clickable { Toast.makeText(context , "Not implemented yet", Toast.LENGTH_LONG).show() }
-                        )
-
-
                     }
                 }
             }
         }
+        Divider(modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 18.dp, bottom = 4.dp))
     }
-
-
-
-
 }
